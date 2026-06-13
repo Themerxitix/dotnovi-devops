@@ -21,3 +21,11 @@ jobs:
       - run: npm run lint
 
       - run: npm test 
+  
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t dotnovi:1.0.0 .
+         
