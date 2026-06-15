@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: database-service              # deze naam komt straks in DATABASE_URL te staan
+spec:
+  selector:
+    app: database             # moet matchen met de labels in deployment-database
+  ports:
+    - protocol: TCP
+      port: 5432          # poort waarop andere pods deze service bereiken
+      targetPort: 5432    # poort van de container zelf
